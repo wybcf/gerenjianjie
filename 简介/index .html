@@ -1,0 +1,2313 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="吴一博 · 应急管理 / 公共安全 / 风险管理 / 数据分析 / AI 应用 · 个人简历">
+<title>吴一博 · 个人简历</title>
+<style>
+/* ============ 基础与变量 ============ */
+*,*::before,*::after{ box-sizing:border-box; }
+
+:root{
+  --brand:#4f46e5;
+  --brand-2:#0ea5e9;
+  --bg:#f4f7fd;
+  --surface:#ffffff;
+  --surface-2:#eaeff9;
+  --text:#0f172a;
+  --muted:#5c6b85;
+  --border:rgba(15,23,42,.09);
+  --nav-bg:rgba(255,255,255,.78);
+  --shadow:0 6px 20px rgba(15,23,42,.06);
+  --shadow-hover:0 16px 36px rgba(15,23,42,.12);
+  --radius:16px;
+  --grad:linear-gradient(135deg,#4f46e5,#0ea5e9);
+}
+
+[data-theme="dark"]{
+  --brand:#8b9bff;
+  --brand-2:#4cc3f7;
+  --bg:#070c16;
+  --surface:#101828;
+  --surface-2:#18233a;
+  --text:#e8eefb;
+  --muted:#93a3bd;
+  --border:rgba(255,255,255,.09);
+  --nav-bg:rgba(10,16,28,.78);
+  --shadow:0 6px 20px rgba(0,0,0,.35);
+  --shadow-hover:0 16px 36px rgba(0,0,0,.5);
+}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:78px;
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC",system-ui,sans-serif;
+  font-size:15px;
+  line-height:1.7;
+  color:var(--text);
+  background-color:var(--bg);
+  background-image:
+    radial-gradient(900px 520px at 8% -10%, rgba(79,70,229,.16), transparent 62%),
+    radial-gradient(820px 480px at 96% -2%, rgba(14,165,233,.14), transparent 60%),
+    radial-gradient(760px 700px at 50% 122%, rgba(79,70,229,.07), transparent 65%);
+  background-attachment:fixed;
+  transition:background-color .3s ease, color .3s ease;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+
+[data-theme="dark"] body{
+  background-image:
+    radial-gradient(900px 520px at 8% -10%, rgba(99,102,241,.20), transparent 62%),
+    radial-gradient(820px 480px at 96% -2%, rgba(56,189,248,.13), transparent 60%),
+    radial-gradient(760px 700px at 50% 122%, rgba(99,102,241,.10), transparent 65%);
+}
+
+a{ color:inherit; }
+
+:focus-visible{
+  outline:2px solid var(--brand);
+  outline-offset:2px;
+  border-radius:8px;
+}
+
+/* ============ 顶部导航 ============ */
+.nav{
+  position:fixed; top:0; left:0; right:0; z-index:60;
+  background:var(--nav-bg);
+  backdrop-filter:blur(16px) saturate(180%);
+  -webkit-backdrop-filter:blur(16px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  transition:background-color .3s ease, border-color .3s ease;
+}
+
+.nav-inner{
+  max-width:1080px;
+  margin:0 auto;
+  height:60px;
+  padding:0 20px;
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+.brand{
+  display:flex; align-items:center; gap:9px;
+  font-weight:800; font-size:15px; letter-spacing:.01em;
+  text-decoration:none; white-space:nowrap;
+}
+
+.brand-mark{
+  position:relative;
+  width:22px; height:22px; border-radius:7px;
+  background:var(--grad);
+  box-shadow:0 4px 12px rgba(79,70,229,.4);
+  flex:0 0 auto;
+}
+.brand-mark::after{
+  content:"";
+  position:absolute; inset:6px;
+  border-radius:2px;
+  background:rgba(255,255,255,.92);
+  clip-path:polygon(0 0,100% 0,100% 34%,34% 34%,34% 100%,0 100%);
+}
+
+.nav-links{
+  display:flex; align-items:center; gap:2px;
+  margin-left:auto;
+  min-width:0;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.nav-links::-webkit-scrollbar{ display:none; }
+
+.nav-link{
+  padding:7px 11px;
+  border-radius:9px;
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--muted);
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .18s ease, color .18s ease;
+}
+.nav-link:hover{ color:var(--text); background:var(--surface-2); }
+.nav-link.active{
+  color:#fff;
+  background:var(--grad);
+  box-shadow:0 4px 12px rgba(79,70,229,.32);
+}
+
+.nav-actions{
+  display:flex; gap:8px; margin-left:8px; flex:0 0 auto;
+}
+
+.icon-btn{
+  width:36px; height:36px;
+  display:grid; place-items:center;
+  border-radius:10px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  cursor:pointer;
+  padding:0;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+}
+.icon-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow); }
+.icon-btn:active{ transform:translateY(0); }
+.icon-btn svg{ width:18px; height:18px; display:block; }
+
+/* ============ 布局 ============ */
+.wrap{
+  max-width:1080px;
+  margin:0 auto;
+  padding:88px 20px 48px;
+}
+
+.section{ margin-top:54px; }
+
+.section-head{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:18px;
+}
+
+.section-title{
+  margin:0;
+  font-size:19px;
+  font-weight:800;
+  letter-spacing:-.01em;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.section-title::before{
+  content:"";
+  width:4px; height:17px;
+  border-radius:99px;
+  background:linear-gradient(180deg,#4f46e5,#0ea5e9);
+  flex:0 0 auto;
+}
+
+.section-sub{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+}
+
+/* ============ 卡片 ============ */
+.card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  transition:transform .2s cubic-bezier(.22,.8,.3,1), box-shadow .2s ease, border-color .2s ease, background-color .3s ease;
+}
+.card:hover{
+  transform:translateY(-3px);
+  box-shadow:var(--shadow-hover);
+}
+
+/* ============ Hero ============ */
+.hero{ margin-bottom:8px; }
+
+.hero-card{
+  position:relative;
+  overflow:hidden;
+  display:flex;
+  gap:26px;
+  align-items:flex-start;
+  padding:30px;
+}
+.hero-card::before{
+  content:"";
+  position:absolute;
+  inset:0 0 auto 0;
+  height:3px;
+  background:linear-gradient(90deg,#4f46e5,#0ea5e9,#22d3ee);
+}
+.hero-card::after{
+  content:"";
+  position:absolute;
+  right:-90px; bottom:-120px;
+  width:320px; height:320px;
+  border-radius:50%;
+  background:radial-gradient(circle at 35% 35%, rgba(79,70,229,.22), rgba(14,165,233,.06) 55%, transparent 72%);
+  pointer-events:none;
+}
+.hero-card:hover{ transform:none; }
+
+.avatar{
+  width:96px; height:96px;
+  flex:0 0 auto;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 12px 28px rgba(79,70,229,.30);
+  position:relative;
+  z-index:1;
+  background:var(--grad);
+  border:1px solid var(--border);
+}
+.avatar img{
+  width:100%; height:100%;
+  object-fit:cover;
+  object-position:center top;
+  display:block;
+}
+.avatar.is-fallback img{ display:none; }
+.avatar.is-fallback::after{
+  content:"吴";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  font-size:34px;
+  font-weight:800;
+  color:rgba(255,255,255,.94);
+}
+
+.hero-body{ flex:1 1 auto; min-width:0; position:relative; z-index:1; }
+
+.hero-name{
+  margin:0;
+  font-size:32px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.24;
+}
+
+.hero-tag{
+  margin:8px 0 0;
+  font-size:14px;
+  font-weight:700;
+  color:var(--brand);
+  letter-spacing:.01em;
+}
+
+.hero-intro{
+  margin:12px 0 0;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.78;
+  max-width:66ch;
+}
+
+.meta-row{
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin-top:14px;
+}
+
+.meta-chip{
+  font-size:12.5px;
+  color:var(--muted);
+  padding:4px 10px;
+  border-radius:99px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+}
+
+.kw-row{
+  display:flex; flex-wrap:wrap; gap:8px;
+  margin-top:18px;
+}
+
+.kw{
+  font-size:12.5px;
+  font-weight:600;
+  padding:5px 12px;
+  border-radius:99px;
+  color:var(--brand);
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  transition:transform .18s ease, border-color .18s ease;
+}
+.kw:hover{ transform:translateY(-1px); border-color:var(--brand); }
+
+.hero-actions{
+  display:flex; flex-wrap:wrap; gap:10px;
+  margin-top:20px;
+}
+
+/* ============ 按钮 ============ */
+.btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 16px;
+  border-radius:11px;
+  font-family:inherit;
+  font-size:13.5px;
+  font-weight:600;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  text-decoration:none;
+  cursor:pointer;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+}
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:var(--shadow-hover);
+  border-color:transparent;
+}
+.btn:active{ transform:translateY(0); }
+.btn svg{ width:16px; height:16px; display:block; flex:0 0 auto; }
+
+.btn-primary{
+  background:var(--grad);
+  color:#fff;
+  border-color:transparent;
+  box-shadow:0 6px 18px rgba(79,70,229,.32);
+}
+.btn-primary:hover{ box-shadow:0 12px 28px rgba(79,70,229,.42); }
+
+.btn .copy-hint{
+  font-size:11px;
+  font-weight:600;
+  color:var(--muted);
+  padding-left:6px;
+  margin-left:2px;
+  border-left:1px solid var(--border);
+}
+
+/* ============ 亮点 ============ */
+.hl-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(210px, 1fr));
+  gap:16px;
+}
+
+.hl-card{ padding:20px; }
+
+.hl-value{
+  font-size:24px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.3;
+  background:var(--grad);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  -webkit-text-fill-color:transparent;
+}
+
+.hl-label{
+  margin-top:4px;
+  font-size:14px;
+  font-weight:700;
+}
+
+.hl-desc{
+  margin-top:6px;
+  font-size:13px;
+  line-height:1.65;
+  color:var(--muted);
+}
+
+/* ============ Tabs ============ */
+.tabbar{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  padding:5px;
+  margin-bottom:18px;
+  border-radius:13px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+}
+
+.tab{
+  appearance:none;
+  border:0;
+  background:transparent;
+  font-family:inherit;
+  font-size:13.5px;
+  font-weight:600;
+  color:var(--muted);
+  padding:8px 15px;
+  border-radius:9px;
+  cursor:pointer;
+  transition:background .18s ease, color .18s ease, box-shadow .18s ease, transform .18s ease;
+}
+.tab:hover{ color:var(--text); }
+.tab[aria-selected="true"]{
+  color:#fff;
+  background:var(--grad);
+  box-shadow:0 4px 14px rgba(79,70,229,.32);
+}
+.tab[aria-selected="true"]:hover{ color:#fff; }
+
+.tabpanel{ outline:none; }
+
+/* ============ 经历 ============ */
+.exp-item{
+  padding:20px 22px;
+  margin-bottom:14px;
+}
+.exp-item:last-child{ margin-bottom:0; }
+
+.exp-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.exp-role{
+  margin:0;
+  font-size:15.5px;
+  font-weight:700;
+}
+
+.exp-org{
+  margin-top:3px;
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--brand);
+}
+
+.exp-time{
+  font-size:12.5px;
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+.exp-points{
+  margin:12px 0 0;
+  padding-left:18px;
+}
+.exp-points li{
+  font-size:13.5px;
+  color:var(--muted);
+  margin-bottom:6px;
+}
+.exp-points li:last-child{ margin-bottom:0; }
+.exp-points li::marker{ color:var(--brand); }
+
+/* ============ 空状态 ============ */
+.empty{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  text-align:center;
+  padding:46px 20px;
+  border:1px dashed var(--border);
+  border-radius:var(--radius);
+  background:var(--surface);
+}
+.empty svg{ width:30px; height:30px; color:var(--muted); opacity:.72; }
+.empty-title{ font-size:14px; font-weight:700; }
+.empty-hint{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  max-width:46ch;
+  line-height:1.7;
+}
+
+/* ============ 项目 ============ */
+.prj-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+  gap:16px;
+}
+
+.prj-card{
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+
+.prj-head{ display:flex; flex-direction:column; gap:4px; }
+
+.prj-title{
+  margin:0;
+  font-size:15.5px;
+  font-weight:700;
+  letter-spacing:-.01em;
+}
+
+.prj-meta{
+  font-size:12.5px;
+  color:var(--muted);
+}
+
+.tag-row{ display:flex; flex-wrap:wrap; gap:6px; }
+
+.tag{
+  font-size:11.5px;
+  font-weight:600;
+  padding:3px 9px;
+  border-radius:7px;
+  color:var(--brand);
+  background:var(--surface-2);
+  border:1px solid var(--border);
+}
+
+.prj-points{
+  margin:0;
+  padding-left:17px;
+}
+.prj-points li{
+  font-size:13.5px;
+  color:var(--muted);
+  margin-bottom:6px;
+  line-height:1.7;
+}
+.prj-points li:last-child{ margin-bottom:0; }
+.prj-points li::marker{ color:var(--brand); }
+
+/* ============ 技能 ============ */
+.skill-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:16px;
+}
+
+.skill-card{ padding:18px 20px; }
+
+.skill-group{
+  margin:0 0 14px;
+  font-size:14px;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.skill-group::before{
+  content:"";
+  width:7px; height:7px;
+  border-radius:50%;
+  background:var(--grad);
+  box-shadow:0 0 0 3px rgba(79,70,229,.14);
+  flex:0 0 auto;
+}
+
+.skill-row{ margin-bottom:13px; }
+.skill-row:last-child{ margin-bottom:0; }
+
+.skill-label{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:10px;
+  font-size:13px;
+  margin-bottom:6px;
+}
+.skill-name{ color:var(--text); }
+.skill-pct{
+  color:var(--muted);
+  font-size:12px;
+  font-variant-numeric:tabular-nums;
+}
+
+.bar{
+  height:6px;
+  border-radius:99px;
+  background:var(--surface-2);
+  overflow:hidden;
+}
+.bar-fill{
+  height:100%;
+  width:0;
+  border-radius:99px;
+  background:linear-gradient(90deg,#4f46e5,#0ea5e9);
+  transition:width .9s cubic-bezier(.22,.8,.3,1);
+}
+
+/* ============ 教育与证书 ============ */
+.edu-grid{
+  display:grid;
+  grid-template-columns:1.3fr 1fr;
+  gap:16px;
+  align-items:start;
+}
+
+.edu-card{ padding:22px; }
+
+.edu-school{
+  display:flex;
+  justify-content:space-between;
+  align-items:baseline;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.edu-school h3{
+  margin:0;
+  font-size:16.5px;
+  font-weight:800;
+  letter-spacing:-.01em;
+}
+
+.edu-badge{
+  font-size:12px;
+  font-weight:700;
+  color:var(--brand);
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  padding:3px 10px;
+  border-radius:99px;
+  white-space:nowrap;
+}
+
+.edu-major{
+  margin:8px 0 0;
+  font-size:13.5px;
+  font-weight:700;
+  color:var(--brand);
+}
+
+.edu-meta{
+  margin:6px 0 0;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.course-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:14px;
+}
+
+.course{
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:8px;
+  background:var(--surface-2);
+  border:1px solid var(--border);
+  color:var(--muted);
+  transition:color .18s ease, border-color .18s ease;
+}
+.course:hover{ color:var(--brand); border-color:var(--brand); }
+
+.edu-notes{
+  margin:16px 0 0;
+  padding-left:17px;
+}
+.edu-notes li{
+  font-size:13.5px;
+  color:var(--muted);
+  margin-bottom:6px;
+  line-height:1.7;
+}
+.edu-notes li:last-child{ margin-bottom:0; }
+.edu-notes li::marker{ color:var(--brand); }
+
+.award-card{ padding:20px 22px; }
+
+.award-title{
+  margin:0 0 6px;
+  font-size:14px;
+  font-weight:800;
+}
+
+.award-item{
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+  padding:11px 0;
+  border-bottom:1px dashed var(--border);
+}
+.award-item:last-child{ border-bottom:0; padding-bottom:0; }
+
+.award-dot{
+  width:8px; height:8px;
+  border-radius:50%;
+  margin-top:7px;
+  flex:0 0 auto;
+  background:var(--grad);
+  box-shadow:0 0 0 3px rgba(79,70,229,.14);
+}
+
+.award-name{
+  font-size:13.5px;
+  font-weight:600;
+  line-height:1.6;
+}
+.award-meta{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* ============ 照片墙 ============ */
+.photo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(240px, 1fr));
+  gap:16px;
+}
+
+.photo-card{
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  padding:0;
+  cursor:zoom-in;
+  position:relative;
+}
+
+.photo-thumb{
+  position:relative;
+  width:100%;
+  aspect-ratio:4 / 3;
+  overflow:hidden;
+  background:
+    linear-gradient(135deg, rgba(79,70,229,.10), rgba(14,165,233,.10)),
+    var(--surface-2);
+}
+
+.photo-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  display:block;
+  transition:transform .4s cubic-bezier(.22,.8,.3,1), filter .3s ease;
+}
+.photo-card:hover .photo-thumb img{ transform:scale(1.06); }
+
+.photo-thumb.is-contain img{ object-fit:contain; padding:10px; }
+.photo-thumb.is-contain:hover img{ transform:scale(1.03); }
+
+.photo-zoom{
+  position:absolute;
+  right:10px; top:10px;
+  width:30px; height:30px;
+  display:grid;
+  place-items:center;
+  border-radius:9px;
+  background:rgba(15,23,42,.55);
+  color:#fff;
+  opacity:0;
+  transform:translateY(-4px);
+  transition:opacity .22s ease, transform .22s ease;
+  pointer-events:none;
+}
+.photo-zoom svg{ width:15px; height:15px; display:block; }
+.photo-card:hover .photo-zoom{ opacity:1; transform:none; }
+
+.photo-cap{
+  padding:12px 14px 14px;
+  display:flex;
+  flex-direction:column;
+  gap:3px;
+}
+.photo-cap-title{
+  font-size:13.5px;
+  font-weight:700;
+  line-height:1.5;
+}
+.photo-cap-meta{
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.5;
+}
+
+.photo-card.is-error{ display:none; }
+
+/* ============ 灯箱 ============ */
+.lightbox{
+  position:fixed;
+  inset:0;
+  z-index:100;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(6,10,20,.86);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+  opacity:0;
+  visibility:hidden;
+  transition:opacity .22s ease, visibility .22s;
+}
+.lightbox.show{ opacity:1; visibility:visible; }
+
+.lightbox-figure{
+  margin:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:14px;
+  max-width:min(94vw, 940px);
+  max-height:92vh;
+  transform:scale(.96);
+  transition:transform .26s cubic-bezier(.22,.8,.3,1);
+}
+.lightbox.show .lightbox-figure{ transform:none; }
+
+.lightbox img{
+  max-width:100%;
+  max-height:78vh;
+  border-radius:14px;
+  object-fit:contain;
+  box-shadow:0 30px 80px rgba(0,0,0,.55);
+  background:var(--surface);
+}
+
+.lightbox-cap{
+  color:rgba(255,255,255,.86);
+  font-size:13.5px;
+  font-weight:600;
+  text-align:center;
+  line-height:1.6;
+}
+.lightbox-cap span{
+  display:block;
+  font-size:12px;
+  font-weight:400;
+  opacity:.68;
+  margin-top:3px;
+}
+
+.lightbox-close{
+  position:absolute;
+  top:18px; right:18px;
+  width:42px; height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.10);
+  color:#fff;
+  cursor:pointer;
+  padding:0;
+  transition:background .2s ease, transform .2s ease;
+}
+.lightbox-close:hover{ background:rgba(255,255,255,.2); transform:rotate(90deg); }
+.lightbox-close svg{ width:18px; height:18px; display:block; }
+
+/* ============ 页脚 ============ */
+.footer{
+  border-top:1px solid var(--border);
+  margin-top:44px;
+}
+.footer-inner{
+  max-width:1080px;
+  margin:0 auto;
+  padding:22px 20px 34px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  font-size:12.5px;
+  color:var(--muted);
+}
+.footer .sep{ opacity:.5; }
+
+/* ============ 返回顶部 ============ */
+.to-top{
+  position:fixed;
+  right:20px; bottom:24px;
+  z-index:55;
+  width:42px; height:42px;
+  display:grid; place-items:center;
+  border-radius:13px;
+  border:1px solid var(--border);
+  background:var(--surface);
+  color:var(--text);
+  font-size:17px;
+  line-height:1;
+  cursor:pointer;
+  padding:0;
+  box-shadow:var(--shadow);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:opacity .22s ease, transform .22s ease, visibility .22s, box-shadow .22s ease;
+}
+.to-top.show{ opacity:1; visibility:visible; transform:none; }
+.to-top:hover{ transform:translateY(-2px); box-shadow:var(--shadow-hover); }
+
+/* ============ Toast ============ */
+.toast{
+  position:fixed;
+  left:50%; bottom:30px;
+  z-index:120;
+  padding:10px 18px;
+  border-radius:11px;
+  font-size:13px;
+  font-weight:600;
+  color:#fff;
+  background:rgba(15,23,42,.92);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 12px 30px rgba(0,0,0,.28);
+  opacity:0;
+  visibility:hidden;
+  pointer-events:none;
+  transform:translate(-50%, 14px);
+  transition:opacity .22s ease, transform .22s ease, visibility .22s;
+  max-width:min(90vw, 420px);
+  text-align:center;
+}
+[data-theme="dark"] .toast{
+  background:rgba(232,238,251,.95);
+  color:#0f172a;
+}
+.toast.show{
+  opacity:1;
+  visibility:visible;
+  transform:translate(-50%, 0);
+}
+
+/* ============ 入场动画 ============ */
+.reveal{ opacity:0; }
+
+.reveal.in{
+  animation:fadeUp .55s cubic-bezier(.22,.8,.3,1) both;
+}
+
+@keyframes fadeUp{
+  from{ opacity:0; transform:translateY(16px); }
+  to{ opacity:1; transform:none; }
+}
+
+/* ============ 响应式 ============ */
+@media (max-width:900px){
+  .edu-grid{ grid-template-columns:1fr; }
+}
+
+@media (max-width:720px){
+  .hero-card{
+    flex-direction:column;
+    gap:18px;
+    padding:24px 20px;
+  }
+  .avatar{ width:80px; height:80px; border-radius:20px; }
+  .hero-name{ font-size:26px; }
+  .hero-intro{ font-size:13.5px; }
+  .wrap{ padding:80px 14px 40px; }
+  .nav-inner{ padding:0 14px; gap:10px; }
+  .section{ margin-top:44px; }
+  .prj-grid{ grid-template-columns:1fr; }
+  .hl-grid{ grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); }
+  .photo-grid{ grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); }
+}
+
+@media (max-width:520px){
+  .nav-link{ font-size:12.5px; padding:6px 9px; }
+  .brand .brand-text{ display:none; }
+  .hero-name{ font-size:23px; }
+  .hl-value{ font-size:21px; }
+  .to-top{ right:14px; bottom:16px; }
+  .photo-grid{ grid-template-columns:1fr 1fr; gap:10px; }
+  .photo-cap{ padding:9px 10px 11px; }
+  .photo-cap-title{ font-size:12px; }
+  .photo-cap-meta{ font-size:11px; }
+  .lightbox{ padding:14px; }
+}
+
+/* ============ 动效降级 ============ */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+  }
+  .reveal{ opacity:1 !important; }
+  .photo-card:hover .photo-thumb img{ transform:none; }
+}
+
+/* ============ 打印 ============ */
+@media print{
+  :root, [data-theme="dark"]{
+    --bg:#fff;
+    --surface:#fff;
+    --surface-2:#f6f7f9;
+    --text:#111;
+    --muted:#555;
+    --border:#d8dbe0;
+    --nav-bg:#fff;
+    --shadow:none;
+    --shadow-hover:none;
+  }
+
+  @page{ margin:12mm 10mm; }
+
+  body{
+    background:#fff !important;
+    background-image:none !important;
+    font-size:11.5px;
+    line-height:1.6;
+  }
+
+  .nav, .to-top, .toast, .footer, .hero-actions, .lightbox{ display:none !important; }
+
+  .wrap{
+    max-width:100%;
+    padding:0;
+  }
+
+  .card{
+    box-shadow:none !important;
+    border:1px solid #d8dbe0;
+    break-inside:avoid;
+    page-break-inside:avoid;
+  }
+  .card:hover{ transform:none !important; }
+
+  .hero-card{ border-top:2px solid #4f46e5; padding:16px; }
+  .hero-card::after{ display:none; }
+  .avatar{ width:70px; height:70px; border-radius:16px; box-shadow:none; }
+  .hero-name{ font-size:22px; }
+
+  .tabbar{ display:none !important; }
+  .tabpanel[hidden]{ display:block !important; }
+  .tabpanel{ margin-bottom:14px; }
+
+  .empty{ display:none !important; }
+
+  .section{ margin-top:20px; }
+  .section-head{ margin-bottom:10px; }
+  .section-title{ font-size:15px; }
+
+  .reveal, .reveal.in{
+    opacity:1 !important;
+    animation:none !important;
+    transform:none !important;
+  }
+
+  .hl-value{
+    background:none !important;
+    color:#4f46e5 !important;
+    -webkit-text-fill-color:#4f46e5 !important;
+  }
+
+  .bar{ background:#e8ebf0; }
+  .bar-fill{ transition:none !important; }
+
+  a{ text-decoration:none; color:#111; }
+
+  .prj-grid{ grid-template-columns:1fr 1fr; gap:10px; }
+  .hl-grid{ grid-template-columns:repeat(4, 1fr); gap:10px; }
+  .skill-grid{ grid-template-columns:1fr 1fr; gap:10px; }
+  .edu-grid{ grid-template-columns:1fr; }
+
+  .exp-item, .prj-card, .skill-card, .hl-card, .edu-card, .award-card{ padding:12px; }
+  .exp-item{ margin-bottom:8px; }
+
+  /* 照片墙打印 */
+  .photo-grid{ grid-template-columns:repeat(3, 1fr); gap:8px; }
+  .photo-card:hover{ transform:none !important; }
+  .photo-thumb{ aspect-ratio:4 / 3; }
+  .photo-cap{ padding:6px 8px 8px; }
+  .photo-cap-title{ font-size:10.5px; }
+  .photo-cap-meta{ font-size:9.5px; }
+  .photo-zoom{ display:none !important; }
+}
+</style>
+</head>
+<body>
+
+<!-- ============ 顶部导航 ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#top" aria-label="返回顶部">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-text">吴一博</span>
+    </a>
+
+    <nav class="nav-links" aria-label="页面导航">
+      <a class="nav-link" href="#top">概览</a>
+      <a class="nav-link" href="#highlights">亮点</a>
+      <a class="nav-link" href="#experience">经历</a>
+      <a class="nav-link" href="#projects">项目</a>
+      <a class="nav-link" href="#skills">技能</a>
+      <a class="nav-link" href="#education">教育</a>
+      <a class="nav-link" href="#gallery">证书</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="切换深浅色模式"></button>
+      <button class="icon-btn" id="printBtn" type="button" aria-label="打印 / 导出 PDF">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="6 9 6 2 18 2 18 9"></polyline>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+          <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ Hero ============ -->
+  <section class="hero" id="top">
+    <div class="card hero-card">
+      <div class="avatar" id="avatarBox">
+        <img id="avatarImg" src="红底.jpg" alt="吴一博 证件照" width="96" height="96">
+      </div>
+
+      <div class="hero-body">
+        <h1 class="hero-name" id="heroName"></h1>
+        <p class="hero-tag" id="heroTag"></p>
+        <p class="hero-intro" id="heroIntro"></p>
+        <div class="meta-row" id="heroMeta"></div>
+        <div class="kw-row" id="heroKeywords"></div>
+        <div class="hero-actions" id="heroContacts"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 亮点成果 ============ -->
+  <section class="section" id="highlights">
+    <div class="section-head">
+      <h2 class="section-title">亮点成果</h2>
+      <p class="section-sub">30 秒速览 · 关键成绩</p>
+    </div>
+    <div class="hl-grid" id="hlGrid"></div>
+  </section>
+
+  <!-- ============ 经历 ============ -->
+  <section class="section" id="experience">
+    <div class="section-head">
+      <h2 class="section-title">经历</h2>
+      <p class="section-sub">校园 · 竞赛训练 · 实习</p>
+    </div>
+    <div id="expRoot"></div>
+  </section>
+
+  <!-- ============ 项目 ============ -->
+  <section class="section" id="projects">
+    <div class="section-head">
+      <h2 class="section-title">项目经历</h2>
+      <p class="section-sub">点击标签筛选</p>
+    </div>
+    <div id="prjRoot"></div>
+  </section>
+
+  <!-- ============ 技能矩阵 ============ -->
+  <section class="section" id="skills">
+    <div class="section-head">
+      <h2 class="section-title">技能矩阵</h2>
+      <p class="section-sub">领域 · 工具 · 语言</p>
+    </div>
+    <div class="skill-grid" id="skillGrid"></div>
+  </section>
+
+  <!-- ============ 教育与证书 ============ -->
+  <section class="section" id="education">
+    <div class="section-head">
+      <h2 class="section-title">教育与证书</h2>
+      <p class="section-sub">学历背景 · 荣誉资质</p>
+    </div>
+    <div class="edu-grid">
+      <div class="card edu-card" id="eduCard"></div>
+      <div class="card award-card" id="awardCard"></div>
+    </div>
+  </section>
+
+  <!-- ============ 证书与奖牌照片 ============ -->
+  <section class="section" id="gallery">
+    <div class="section-head">
+      <h2 class="section-title">证书与奖牌</h2>
+      <p class="section-sub">点击图片可放大查看</p>
+    </div>
+    <div class="photo-grid" id="photoGrid"></div>
+  </section>
+
+</main>
+
+<!-- ============ 页脚 ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <span>© <span id="year"></span> 吴一博 · 个人简历</span>
+    <span class="sep">|</span>
+    <span>最后更新：<span id="updated"></span></span>
+  </div>
+</footer>
+
+<!-- ============ 返回顶部 ============ -->
+<button class="to-top" id="toTop" type="button" aria-label="返回顶部">↑</button>
+
+<!-- ============ 灯箱 ============ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览" hidden>
+  <button class="lightbox-close" id="lightboxClose" type="button" aria-label="关闭预览">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="18" y1="6" x2="6" y2="18"></line>
+      <line x1="6" y1="6" x2="18" y2="18"></line>
+    </svg>
+  </button>
+  <figure class="lightbox-figure">
+    <img id="lightboxImg" src="" alt="">
+    <figcaption class="lightbox-cap" id="lightboxCap"></figcaption>
+  </figure>
+</div>
+
+<!-- ============ Toast ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  /* =========================================================
+     1. 数据（缺失信息用【待补】标记，渲染时自动隐藏）
+     ========================================================= */
+  var EMAIL_USER = '3047352167';
+  var EMAIL_DOMAIN = 'qq.com';
+
+  var resume = {
+    name: '吴一博',
+    avatar: '红底.jpg',
+    objective: '应急管理 · 公共安全 · 风险管理 · 数据分析 · AI 应用',
+    intro: '济南大学 2026 级管理科学与工程学院应急管理专业新生。聚焦应急管理、公共安全与风险治理方向，持续补充数据分析、AI 工具与公文写作能力，构建「应急管理 + 数据分析 + AI 应用」的复合型能力结构。',
+    meta: ['男', '2007 年生', '籍贯山东聊城', '共青团员', '济南大学 2026 级'],
+    keywords: ['应急管理', '公共安全', '风险识别', '隐患排查', '数据分析', 'AI 应用', 'Prompt 工程', '公文写作', '抗压执行', '团队协作'],
+
+    phone: '17663509117',
+    wechat: '17663509817',
+
+    highlights: [
+      { value: '2 项', label: '人工智能认证', desc: '自主规划 AI 学习路径，覆盖机器学习基础、Prompt 工程与 AIGC 办公应用。' },
+      { value: '市赛', label: '武术 二等奖 · 三等奖', desc: '长期周期化训练，锤炼目标管理、抗压执行与临场应变能力。' },
+      { value: '围棋', label: '比赛 二等奖 · 三等奖', desc: '逻辑推演与全局规划训练，强化压力下的决策稳定性。' },
+      { value: '3 大', label: '复合能力板块', desc: '应急管理 + 数据分析 + AI 应用，形成清晰的职业发展方向。' }
+    ],
+
+    experience: [
+      {
+        id: 'work',
+        label: '工作 / 实习',
+        items: []
+      },
+      {
+        id: 'campus',
+        label: '校园经历',
+        items: [
+          {
+            role: '应急管理专业新生启航计划',
+            org: '济南大学 管理科学与工程学院',
+            time: '2026.09 – 至今',
+            points: [
+              '情境：作为 2026 级应急管理专业新生，主动建立专业认知与职业发展路径。',
+              '行动：系统关注城市公共安全、自然灾害、事故灾难、公共卫生事件等应急场景，学习应急预案编制、风险评估与危机沟通基础框架。',
+              '结果：形成个人专业学习地图与技能提升清单，明确「应急管理 + 数据分析 + AI 应用」复合发展方向。',
+              '影响：持续参与专业讲座、新生研讨与实践活动，沉淀可迁移的公共安全分析视角。'
+            ]
+          }
+        ]
+      },
+      {
+        id: 'training',
+        label: '竞赛与训练',
+        items: [
+          {
+            role: '武术竞技训练项目',
+            org: '市级武术比赛 二等奖 · 三等奖',
+            time: '长期训练',
+            points: [
+              '情境：长期参与武术训练，目标提升体能储备、套路稳定性与实战对抗能力。',
+              '行动：制定周期化训练计划，执行体能、柔韧、套路与对抗训练，并参加市级武术比赛。',
+              '结果：获得市级武术比赛二等奖、三等奖。',
+              '影响：锤炼目标管理、抗压执行、纪律意识与临场应变能力。'
+            ]
+          },
+          {
+            role: '围棋策略训练项目',
+            org: '围棋比赛 二等奖 · 三等奖',
+            time: '长期训练',
+            points: [
+              '情境：通过围棋训练提升逻辑推演、全局规划与决策能力。',
+              '行动：系统学习布局、定式、中盘战斗与官子，参加围棋比赛并逐局复盘。',
+              '结果：获得围棋比赛二等奖、三等奖。',
+              '影响：强化结构化思考、长线规划与压力下的决策稳定性。'
+            ]
+          }
+        ]
+      }
+    ],
+
+    projects: [
+      {
+        title: '人工智能认证学习项目',
+        meta: '2024 – 2026 · 自主学习',
+        cat: 'ai',
+        tags: ['AI 应用', '数据分析', '自主学习'],
+        points: [
+          '面向「AI + 应急管理」趋势，自主规划人工智能认证学习路径，补齐数据分析与智能工具应用短板。',
+          '系统学习机器学习基础、数据处理、模型评估、Prompt 工程与 AIGC 办公应用。',
+          '通过考核并获得两项人工智能证书，形成 AI 工具在资料检索、报告撰写、数据整理中的可复用流程。',
+          '具备将 AI 工具迁移至应急管理、风险评估与公共安全场景的基础能力。'
+        ]
+      },
+      {
+        title: '应急管理专业新生启航计划',
+        meta: '2026.09 – 至今 · 济南大学',
+        cat: 'em',
+        tags: ['应急管理', '风险评估', '专业认知'],
+        points: [
+          '围绕城市公共安全、自然灾害、事故灾难与公共卫生事件等典型场景建立专业认知。',
+          '学习应急预案编制、风险评估与危机沟通基础框架，梳理专业学习地图与技能清单。',
+          '明确「应急管理 + 数据分析 + AI 应用」的复合发展方向。'
+        ]
+      },
+      {
+        title: '武术竞技训练项目',
+        meta: '长期训练 · 市级比赛',
+        cat: 'sport',
+        tags: ['竞赛', '体能训练', '抗压执行'],
+        points: [
+          '制定周期化训练计划，覆盖体能、柔韧、套路与实战对抗。',
+          '参加市级武术比赛，获得二等奖、三等奖。',
+          '长期训练沉淀目标管理、纪律意识与临场应变能力。'
+        ]
+      },
+      {
+        title: '围棋策略训练项目',
+        meta: '长期训练 · 围棋比赛',
+        cat: 'sport',
+        tags: ['竞赛', '逻辑推演', '决策'],
+        points: [
+          '系统学习布局、定式、中盘战斗与官子，建立完整对局思路。',
+          '参加围棋比赛并获得二等奖、三等奖。',
+          '通过逐局复盘强化结构化思考与压力下的决策稳定性。'
+        ]
+      }
+    ],
+
+    projectFilters: [
+      { id: 'all', label: '全部' },
+      { id: 'ai', label: 'AI 与数据' },
+      { id: 'em', label: '应急管理' },
+      { id: 'sport', label: '竞赛训练' }
+    ],
+
+    skills: [
+      { group: '应急管理', items: [['风险识别与隐患排查', 70], ['应急预案框架', 65], ['应急演练流程', 65], ['公共安全基础理论', 70]] },
+      { group: '数据与工具', items: [['Excel / WPS 数据清洗', 80], ['透视表与可视化', 75], ['统计分析与报告输出', 65], ['SPSS / Python / SQL', 50]] },
+      { group: 'AI 应用', items: [['Prompt 工程', 80], ['AIGC 办公应用', 78], ['知识检索与管理', 75], ['机器学习基础', 55]] },
+      { group: '办公与文书', items: [['Word 排版', 85], ['PPT 汇报', 80], ['公文写作', 70], ['会议纪要', 75]] },
+      { group: '语言与特长', items: [['普通话', 90], ['英语', 60], ['武术', 85], ['羽毛球', 75]] }
+    ],
+
+    education: {
+      school: '济南大学',
+      college: '管理科学与工程学院',
+      major: '应急管理专业',
+      degree: '本科 · 2026 级',
+      time: '2026.09 – 2030.06（预计）',
+      location: '济南',
+      courses: ['应急管理概论', '管理学原理', '公共政策分析', '风险评估与危机管理', '运筹学', '统计学', '灾害学', '应急预案编制与演练', '数据挖掘与 AI 应用'],
+      notes: [
+        '培养方向：聚焦应急管理、公共安全、风险治理与数字化应急，持续补充数据分析、AI 工具与公文写作能力。',
+        '校园发展：主动参与专业讲座、新生研讨、学科竞赛与实践活动，构建「应急管理 + 数据分析 + AI 应用」复合能力路径。'
+      ]
+    },
+
+    awards: [
+      { name: '市级武术比赛 二等奖、三等奖', meta: '武术竞技' },
+      { name: '围棋比赛 二等奖、三等奖', meta: '逻辑与策略' },
+      { name: '人工智能证书 两项', meta: 'AI 应用能力' },
+      { name: '共青团员', meta: '政治面貌' }
+    ],
+
+    /* 照片墙：证书 / 奖牌 / 证件照（已放在 index.html 同级目录） */
+    photos: [
+      {
+        src: '初级.jpg',
+        title: '人工智能证书（初级）',
+        meta: 'AI 应用能力认证 · 初级',
+        fit: 'contain'
+      },
+      {
+        src: '高级.jpg',
+        title: '人工智能证书（高级）',
+        meta: 'AI 应用能力认证 · 高级',
+        fit: 'contain'
+      },
+      {
+        src: '奖牌.jpg',
+        title: '武术比赛奖牌',
+        meta: '市级武术比赛 二等奖 · 三等奖',
+        fit: 'cover'
+      }
+    ]
+  };
+
+  /* =========================================================
+     2. 工具函数
+     ========================================================= */
+  function $(sel, root) { return (root || document).querySelector(sel); }
+  function $$(sel, root) { return Array.prototype.slice.call((root || document).querySelectorAll(sel)); }
+
+  function clean(v) {
+    if (v === null || v === undefined) return '';
+    return String(v).replace(/【待补】/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  function valid(v) { return clean(v).length > 0; }
+
+  function h(tag, opts, children) {
+    var node = document.createElement(tag);
+    opts = opts || {};
+    if (opts.className) node.className = opts.className;
+    if (opts.text !== undefined) node.textContent = opts.text;
+    if (opts.html !== undefined) node.innerHTML = opts.html;
+    if (opts.attrs) {
+      Object.keys(opts.attrs).forEach(function (k) {
+        if (opts.attrs[k] !== null && opts.attrs[k] !== undefined) node.setAttribute(k, opts.attrs[k]);
+      });
+    }
+    if (opts.on) {
+      Object.keys(opts.on).forEach(function (k) { node.addEventListener(k, opts.on[k]); });
+    }
+    var kids = children === undefined ? [] : (Array.isArray(children) ? children : [children]);
+    kids.forEach(function (c) { if (c) node.appendChild(c); });
+    return node;
+  }
+
+  var ICONS = {
+    phone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>',
+    wechat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>',
+    mail: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>',
+    sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>',
+    moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>',
+    zoom: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line><line x1="11" y1="8" x2="11" y2="14"></line><line x1="8" y1="11" x2="14" y2="11"></line></svg>',
+    empty: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="9" y1="13" x2="15" y2="13"></line><line x1="9" y1="17" x2="13" y2="17"></line></svg>'
+  };
+
+  /* =========================================================
+     3. Toast & 复制
+     ========================================================= */
+  var toastEl = $('#toast');
+  var toastTimer = null;
+
+  function toast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 1900);
+  }
+
+  function copyText(text, okMsg) {
+    var done = function () { toast(okMsg || '已复制到剪贴板'); };
+    var fail = function () { toast('复制失败，请手动复制'); };
+
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(done).catch(function () {
+        legacyCopy(text) ? done() : fail();
+      });
+      return;
+    }
+    legacyCopy(text) ? done() : fail();
+  }
+
+  function legacyCopy(text) {
+    try {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      var ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  /* =========================================================
+     4. 主题
+     ========================================================= */
+  var themeBtn = $('#themeBtn');
+  var STORAGE_KEY = 'wyb-resume-theme';
+
+  function readTheme() {
+    try { return localStorage.getItem(STORAGE_KEY); } catch (e) { return null; }
+  }
+
+  function saveTheme(t) {
+    try { localStorage.setItem(STORAGE_KEY, t); } catch (e) { /* ignore */ }
+  }
+
+  function applyTheme(t) {
+    document.documentElement.setAttribute('data-theme', t);
+    themeBtn.innerHTML = t === 'dark' ? ICONS.sun : ICONS.moon;
+    themeBtn.setAttribute('aria-label', t === 'dark' ? '切换到浅色模式' : '切换到深色模式');
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', t === 'dark' ? '#070c16' : '#ffffff');
+  }
+
+  (function initTheme() {
+    var saved = readTheme();
+    var prefersDark = false;
+    try {
+      prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    } catch (e) { /* ignore */ }
+    applyTheme(saved || (prefersDark ? 'dark' : 'light'));
+  })();
+
+  themeBtn.addEventListener('click', function () {
+    var now = document.documentElement.getAttribute('data-theme');
+    var next = now === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+    saveTheme(next);
+  });
+
+  /* =========================================================
+     5. 头像
+     ========================================================= */
+  function initAvatar() {
+    var box = $('#avatarBox');
+    var img = $('#avatarImg');
+    if (!box || !img) return;
+
+    img.addEventListener('error', function () {
+      box.classList.add('is-fallback');
+    });
+  }
+
+  /* =========================================================
+     6. 渲染 Hero
+     ========================================================= */
+  function renderHero() {
+    $('#heroName').textContent = resume.name;
+    $('#heroTag').textContent = resume.objective;
+    $('#heroIntro').textContent = clean(resume.intro);
+
+    var metaBox = $('#heroMeta');
+    resume.meta.forEach(function (m) {
+      var v = clean(m);
+      if (v) metaBox.appendChild(h('span', { className: 'meta-chip', text: v }));
+    });
+
+    var kwBox = $('#heroKeywords');
+    resume.keywords.forEach(function (k) {
+      var v = clean(k);
+      if (v) kwBox.appendChild(h('span', { className: 'kw', text: v }));
+    });
+
+    renderContacts();
+  }
+
+  function renderContacts() {
+    var box = $('#heroContacts');
+
+    if (valid(resume.phone)) {
+      var phone = clean(resume.phone);
+      box.appendChild(
+        h('a', {
+          className: 'btn btn-primary',
+          attrs: { href: 'tel:' + phone.replace(/\s/g, ''), 'aria-label': '拨打电话 ' + phone }
+        }, [
+          h('span', { html: ICONS.phone }),
+          h('span', { text: phone })
+        ])
+      );
+    }
+
+    if (valid(resume.wechat)) {
+      var wechat = clean(resume.wechat);
+      box.appendChild(
+        h('button', {
+          className: 'btn',
+          attrs: { type: 'button', 'aria-label': '复制微信号 ' + wechat },
+          on: {
+            click: function () { copyText(wechat, '微信号已复制：' + wechat); }
+          }
+        }, [
+          h('span', { html: ICONS.wechat }),
+          h('span', { text: '微信 ' + wechat }),
+          h('span', { className: 'copy-hint', text: '复制' })
+        ])
+      );
+    }
+
+    if (EMAIL_USER && EMAIL_DOMAIN) {
+      var email = EMAIL_USER + '@' + EMAIL_DOMAIN;
+      box.appendChild(
+        h('button', {
+          className: 'btn',
+          attrs: { type: 'button', 'aria-label': '复制邮箱 ' + email },
+          on: {
+            click: function () { copyText(email, '邮箱已复制：' + email); }
+          }
+        }, [
+          h('span', { html: ICONS.mail }),
+          h('span', { text: email }),
+          h('span', { className: 'copy-hint', text: '复制' })
+        ])
+      );
+    }
+
+    if (!box.children.length) box.style.display = 'none';
+  }
+
+  /* =========================================================
+     7. 渲染亮点
+     ========================================================= */
+  function renderHighlights() {
+    var grid = $('#hlGrid');
+    var list = (resume.highlights || []).filter(function (it) {
+      return valid(it.value) || valid(it.label);
+    });
+
+    if (!list.length) {
+      $('#highlights').style.display = 'none';
+      return;
+    }
+
+    list.forEach(function (it) {
+      var card = h('div', { className: 'card hl-card reveal' }, [
+        h('div', { className: 'hl-value', text: clean(it.value) }),
+        h('div', { className: 'hl-label', text: clean(it.label) }),
+        valid(it.desc) ? h('div', { className: 'hl-desc', text: clean(it.desc) }) : null
+      ]);
+      grid.appendChild(card);
+    });
+  }
+
+  /* =========================================================
+     8. 渲染经历（Tabs）
+     ========================================================= */
+  function renderExperience() {
+    var root = $('#expRoot');
+    var groups = (resume.experience || []).filter(function (g) {
+      return g && g.items && g.items.length > 0;
+    });
+
+    if (!groups.length) {
+      root.appendChild(buildEmpty('暂无经历记录', '可补充校园勤工助学、志愿服务、社团组织、班级工作、社会实践等内容。'));
+      return;
+    }
+
+    if (groups.length === 1) {
+      renderExpItems(root, groups[0].items);
+      return;
+    }
+
+    var tabbar = h('div', {
+      className: 'tabbar',
+      attrs: { role: 'tablist', 'aria-label': '经历分类' }
+    });
+    var panels = h('div', {});
+
+    var tabs = [];
+    var panelList = [];
+
+    groups.forEach(function (g, i) {
+      var tabId = 'exp-tab-' + g.id;
+      var panelId = 'exp-panel-' + g.id;
+
+      var tab = h('button', {
+        className: 'tab',
+        text: g.label,
+        attrs: {
+          type: 'button',
+          role: 'tab',
+          id: tabId,
+          'aria-controls': panelId,
+          'aria-selected': i === 0 ? 'true' : 'false',
+          tabindex: i === 0 ? '0' : '-1'
+        }
+      });
+
+      var panel = h('div', {
+        className: 'tabpanel',
+        attrs: {
+          role: 'tabpanel',
+          id: panelId,
+          'aria-labelledby': tabId,
+          tabindex: '0'
+        }
+      });
+      if (i !== 0) panel.hidden = true;
+      renderExpItems(panel, g.items);
+
+      tabs.push(tab);
+      panelList.push(panel);
+      tabbar.appendChild(tab);
+      panels.appendChild(panel);
+    });
+
+    root.appendChild(tabbar);
+    root.appendChild(panels);
+    initTabs(tabs, panelList);
+  }
+
+  function renderExpItems(container, items) {
+    items.forEach(function (it) {
+      var points = (it.points || []).map(clean).filter(Boolean);
+
+      var head = h('div', { className: 'exp-top' }, [
+        h('div', {}, [
+          h('h3', { className: 'exp-role', text: clean(it.role) }),
+          valid(it.org) ? h('div', { className: 'exp-org', text: clean(it.org) }) : null
+        ]),
+        valid(it.time) ? h('div', { className: 'exp-time', text: clean(it.time) }) : null
+      ]);
+
+      var listEl = null;
+      if (points.length) {
+        listEl = h('ul', { className: 'exp-points' });
+        points.forEach(function (p) {
+          listEl.appendChild(h('li', { text: p }));
+        });
+      }
+
+      container.appendChild(
+        h('div', { className: 'card exp-item reveal' }, [head, listEl])
+      );
+    });
+  }
+
+  /* =========================================================
+     9. 渲染项目（筛选 Tabs）
+     ========================================================= */
+  function renderProjects() {
+    var root = $('#prjRoot');
+    var projects = (resume.projects || []).filter(function (p) {
+      return valid(p.title);
+    });
+
+    if (!projects.length) {
+      $('#projects').style.display = 'none';
+      return;
+    }
+
+    var filters = (resume.projectFilters || [{ id: 'all', label: '全部' }]).filter(function (f) {
+      return f.id === 'all' || projects.some(function (p) { return p.cat === f.id; });
+    });
+
+    var tabbar = h('div', {
+      className: 'tabbar',
+      attrs: { role: 'tablist', 'aria-label': '项目分类筛选' }
+    });
+
+    var grid = h('div', { className: 'prj-grid' });
+    var cards = [];
+
+    projects.forEach(function (p) {
+      var points = (p.points || []).map(clean).filter(Boolean);
+
+      var tags = h('div', { className: 'tag-row' });
+      (p.tags || []).forEach(function (t) {
+        var v = clean(t);
+        if (v) tags.appendChild(h('span', { className: 'tag', text: v }));
+      });
+
+      var ul = null;
+      if (points.length) {
+        ul = h('ul', { className: 'prj-points' });
+        points.forEach(function (pt) { ul.appendChild(h('li', { text: pt })); });
+      }
+
+      var card = h('article', {
+        className: 'card prj-card reveal',
+        attrs: { 'data-cat': p.cat || 'other' }
+      }, [
+        h('div', { className: 'prj-head' }, [
+          h('h3', { className: 'prj-title', text: clean(p.title) }),
+          valid(p.meta) ? h('div', { className: 'prj-meta', text: clean(p.meta) }) : null
+        ]),
+        tags.children.length ? tags : null,
+        ul
+      ]);
+
+      cards.push(card);
+      grid.appendChild(card);
+    });
+
+    var tabEls = [];
+    filters.forEach(function (f, i) {
+      var tab = h('button', {
+        className: 'tab',
+        text: f.label,
+        attrs: {
+          type: 'button',
+          role: 'tab',
+          'aria-selected': i === 0 ? 'true' : 'false',
+          tabindex: i === 0 ? '0' : '-1',
+          'data-filter': f.id
+        }
+      });
+      tabEls.push(tab);
+      tabbar.appendChild(tab);
+    });
+
+    function applyFilter(id) {
+      cards.forEach(function (c) {
+        c.hidden = !(id === 'all' || c.getAttribute('data-cat') === id);
+      });
+    }
+
+    tabEls.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        tabEls.forEach(function (t) {
+          var on = t === tab;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+        });
+        applyFilter(tab.getAttribute('data-filter'));
+      });
+
+      tab.addEventListener('keydown', function (e) {
+        var idx = tabEls.indexOf(tab);
+        var next = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (idx + 1) % tabEls.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (idx - 1 + tabEls.length) % tabEls.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabEls.length - 1;
+        if (next >= 0) {
+          e.preventDefault();
+          tabEls[next].focus();
+          tabEls[next].click();
+        }
+      });
+    });
+
+    root.appendChild(tabbar);
+    root.appendChild(grid);
+  }
+
+  /* =========================================================
+     10. Tabs 通用逻辑（ARIA + 键盘）
+     ========================================================= */
+  function initTabs(tabs, panels) {
+    function select(i) {
+      tabs.forEach(function (t, j) {
+        var on = i === j;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(i); });
+
+      tab.addEventListener('keydown', function (e) {
+        var next = -1;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = (i + 1) % tabs.length;
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') next = (i - 1 + tabs.length) % tabs.length;
+        else if (e.key === 'Home') next = 0;
+        else if (e.key === 'End') next = tabs.length - 1;
+        if (next >= 0) {
+          e.preventDefault();
+          select(next);
+          tabs[next].focus();
+        }
+      });
+    });
+  }
+
+  /* =========================================================
+     11. 渲染技能矩阵
+     ========================================================= */
+  function renderSkills() {
+    var grid = $('#skillGrid');
+    var groups = (resume.skills || []).filter(function (g) {
+      return g && g.items && g.items.length;
+    });
+
+    if (!groups.length) {
+      $('#skills').style.display = 'none';
+      return;
+    }
+
+    groups.forEach(function (g) {
+      var card = h('div', { className: 'card skill-card reveal' }, [
+        h('h3', { className: 'skill-group', text: clean(g.group) })
+      ]);
+
+      g.items.forEach(function (pair) {
+        var name = clean(pair[0]);
+        var pct = Math.max(0, Math.min(100, Number(pair[1]) || 0));
+        if (!name) return;
+
+        var fill = h('div', { className: 'bar-fill', attrs: { 'data-pct': pct } });
+
+        card.appendChild(
+          h('div', { className: 'skill-row' }, [
+            h('div', { className: 'skill-label' }, [
+              h('span', { className: 'skill-name', text: name }),
+              h('span', { className: 'skill-pct', text: pct + '%' })
+            ]),
+            h('div', { className: 'bar', attrs: { role: 'progressbar', 'aria-valuenow': pct, 'aria-valuemin': '0', 'aria-valuemax': '100', 'aria-label': name } }, [fill])
+          ])
+        );
+      });
+
+      grid.appendChild(card);
+    });
+
+    animateBars();
+  }
+
+  function animateBars() {
+    var fills = $$('.bar-fill');
+    if (!fills.length) return;
+
+    var reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* ignore */ }
+
+    var run = function (el) {
+      el.style.width = el.getAttribute('data-pct') + '%';
+    };
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      fills.forEach(run);
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          run(en.target);
+          io.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.2 });
+
+    fills.forEach(function (f) { io.observe(f); });
+  }
+
+  /* =========================================================
+     12. 渲染教育 + 证书
+     ========================================================= */
+  function renderEducation() {
+    var edu = resume.education;
+    var card = $('#eduCard');
+    var awardCard = $('#awardCard');
+
+    if (!edu || !valid(edu.school)) {
+      $('#education').style.display = 'none';
+      return;
+    }
+
+    card.appendChild(
+      h('div', { className: 'edu-school' }, [
+        h('h3', { text: clean(edu.school) }),
+        valid(edu.degree) ? h('span', { className: 'edu-badge', text: clean(edu.degree) }) : null
+      ])
+    );
+
+    var majorLine = [clean(edu.college), clean(edu.major)].filter(Boolean).join('｜');
+    if (majorLine) card.appendChild(h('p', { className: 'edu-major', text: majorLine }));
+
+    var metaLine = [clean(edu.time), clean(edu.location)].filter(Boolean).join('｜');
+    if (metaLine) card.appendChild(h('p', { className: 'edu-meta', text: metaLine }));
+
+    var courses = (edu.courses || []).map(clean).filter(Boolean);
+    if (courses.length) {
+      var row = h('div', { className: 'course-row' });
+      courses.forEach(function (c) { row.appendChild(h('span', { className: 'course', text: c })); });
+      card.appendChild(row);
+    }
+
+    var notes = (edu.notes || []).map(clean).filter(Boolean);
+    if (notes.length) {
+      var ul = h('ul', { className: 'edu-notes' });
+      notes.forEach(function (n) { ul.appendChild(h('li', { text: n })); });
+      card.appendChild(ul);
+    }
+
+    var awards = (resume.awards || []).filter(function (a) { return valid(a.name); });
+    if (!awards.length) {
+      awardCard.style.display = 'none';
+      return;
+    }
+
+    awardCard.appendChild(h('h3', { className: 'award-title', text: '获奖与证书' }));
+
+    awards.forEach(function (a) {
+      awardCard.appendChild(
+        h('div', { className: 'award-item' }, [
+          h('span', { className: 'award-dot', attrs: { 'aria-hidden': 'true' } }),
+          h('div', {}, [
+            h('div', { className: 'award-name', text: clean(a.name) }),
+            valid(a.meta) ? h('div', { className: 'award-meta', text: clean(a.meta) }) : null
+          ])
+        ])
+      );
+    });
+  }
+
+  /* =========================================================
+     13. 照片墙 + 灯箱
+     ========================================================= */
+  function renderPhotos() {
+    var grid = $('#photoGrid');
+    var section = $('#gallery');
+    var list = (resume.photos || []).filter(function (p) { return p && p.src; });
+
+    if (!list.length) {
+      section.style.display = 'none';
+      return;
+    }
+
+    var cards = [];
+
+    list.forEach(function (p) {
+      var img = h('img', {
+        attrs: {
+          src: p.src,
+          alt: clean(p.title) || '证书照片',
+          loading: 'lazy',
+          decoding: 'async'
+        }
+      });
+
+      var thumb = h('div', {
+        className: 'photo-thumb' + (p.fit === 'contain' ? ' is-contain' : '')
+      }, [
+        img,
+        h('span', { className: 'photo-zoom', html: ICONS.zoom, attrs: { 'aria-hidden': 'true' } })
+      ]);
+
+      var cap = h('div', { className: 'photo-cap' }, [
+        h('div', { className: 'photo-cap-title', text: clean(p.title) }),
+        valid(p.meta) ? h('div', { className: 'photo-cap-meta', text: clean(p.meta) }) : null
+      ]);
+
+      var card = h('button', {
+        className: 'card photo-card reveal',
+        attrs: {
+          type: 'button',
+          'aria-label': '查看大图：' + (clean(p.title) || '照片')
+        },
+        on: {
+          click: function () { openLightbox(p); }
+        }
+      }, [thumb, cap]);
+
+      img.addEventListener('error', function () {
+        card.classList.add('is-error');
+        if (cards.every(function (c) { return c.classList.contains('is-error'); })) {
+          section.style.display = 'none';
+        }
+      });
+
+      cards.push(card);
+      grid.appendChild(card);
+    });
+  }
+
+  var lightbox = $('#lightbox');
+  var lightboxImg = $('#lightboxImg');
+  var lightboxCap = $('#lightboxCap');
+  var lastFocused = null;
+
+  function openLightbox(p) {
+    lastFocused = document.activeElement;
+
+    lightboxImg.src = p.src;
+    lightboxImg.alt = clean(p.title) || '照片预览';
+
+    lightboxCap.textContent = '';
+    lightboxCap.appendChild(document.createTextNode(clean(p.title) || ''));
+    if (valid(p.meta)) {
+      lightboxCap.appendChild(h('span', { text: clean(p.meta) }));
+    }
+
+    lightbox.hidden = false;
+    // 触发过渡
+    requestAnimationFrame(function () {
+      lightbox.classList.add('show');
+    });
+    document.body.style.overflow = 'hidden';
+    $('#lightboxClose').focus();
+  }
+
+  function closeLightbox() {
+    lightbox.classList.remove('show');
+    document.body.style.overflow = '';
+
+    var done = function () {
+      lightbox.hidden = true;
+      lightboxImg.removeAttribute('src');
+      lightbox.removeEventListener('transitionend', done);
+    };
+
+    var reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* ignore */ }
+
+    if (reduce) {
+      done();
+    } else {
+      lightbox.addEventListener('transitionend', done);
+      // 兜底
+      setTimeout(done, 400);
+    }
+
+    if (lastFocused && typeof lastFocused.focus === 'function') {
+      lastFocused.focus();
+    }
+  }
+
+  function initLightbox() {
+    $('#lightboxClose').addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', function (e) {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && lightbox.classList.contains('show')) {
+        closeLightbox();
+      }
+    });
+
+    // 焦点锁定
+    lightbox.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      e.preventDefault();
+      $('#lightboxClose').focus();
+    });
+  }
+
+  /* =========================================================
+     14. 空状态
+     ========================================================= */
+  function buildEmpty(title, hint) {
+    return h('div', { className: 'empty' }, [
+      h('span', { html: ICONS.empty }),
+      h('div', { className: 'empty-title', text: title }),
+      hint ? h('p', { className: 'empty-hint', text: hint }) : null
+    ]);
+  }
+
+  /* =========================================================
+     15. 入场动画
+     ========================================================= */
+  function initReveal() {
+    var items = $$('.reveal');
+    if (!items.length) return;
+
+    var reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* ignore */ }
+
+    if (reduce || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en, i) {
+        if (en.isIntersecting) {
+          var el = en.target;
+          setTimeout(function () { el.classList.add('in'); }, Math.min(i * 55, 240));
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    items.forEach(function (el) { io.observe(el); });
+  }
+
+  /* =========================================================
+     16. 导航高亮 / 返回顶部 / 打印
+     ========================================================= */
+  function initNav() {
+    var links = $$('.nav-link');
+    var sections = $$('main section[id]');
+
+    if ('IntersectionObserver' in window && sections.length) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) {
+            var id = '#' + en.target.id;
+            links.forEach(function (l) {
+              l.classList.toggle('active', l.getAttribute('href') === id);
+            });
+          }
+        });
+      }, { rootMargin: '-72px 0px -68% 0px', threshold: 0 });
+
+      sections.forEach(function (s) { io.observe(s); });
+    }
+  }
+
+  function initToTop() {
+    var btn = $('#toTop');
+    var ticking = false;
+
+    function update() {
+      btn.classList.toggle('show', window.scrollY > 420);
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(update);
+      }
+    }, { passive: true });
+
+    btn.addEventListener('click', function () {
+      var reduce = false;
+      try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) { /* ignore */ }
+      window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
+    });
+
+    update();
+  }
+
+  function initPrint() {
+    $('#printBtn').addEventListener('click', function () {
+      window.print();
+    });
+  }
+
+  function initFooter() {
+    var now = new Date();
+    $('#year').textContent = now.getFullYear();
+    $('#updated').textContent = now.getFullYear() + '-' +
+      String(now.getMonth() + 1).padStart(2, '0') + '-' +
+      String(now.getDate()).padStart(2, '0');
+  }
+
+  /* =========================================================
+     17. 启动
+     ========================================================= */
+  function boot() {
+    initAvatar();
+    renderHero();
+    renderHighlights();
+    renderExperience();
+    renderProjects();
+    renderSkills();
+    renderEducation();
+    renderPhotos();
+
+    initLightbox();
+    initNav();
+    initToTop();
+    initPrint();
+    initFooter();
+    initReveal();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', boot);
+  } else {
+    boot();
+  }
+})();
+</script>
+</body>
+</html>
